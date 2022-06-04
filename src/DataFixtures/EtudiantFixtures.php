@@ -17,7 +17,7 @@ class EtudiantFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $plainPassword = 'passer@123';
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $user = new Etudiant();
             $user->setNomComplet('Nom et Prenom' . $i);
             $user->setEmail('login_etu' . $i);

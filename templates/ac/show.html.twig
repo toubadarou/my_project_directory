@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AC{% endblock %}
+
+{% block body %}
+    <h1>AC</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ a_c.id }}</td>
+            </tr>
+            <tr>
+                <th>NomComplet</th>
+                <td>{{ a_c.nomComplet }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ a_c.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ a_c.roles ? a_c.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ a_c.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_a_c_index') }}">back to list</a>
+
+    <a href="{{ path('app_a_c_edit', {'id': a_c.id}) }}">edit</a>
+
+    {{ include('ac/_delete_form.html.twig') }}
+{% endblock %}

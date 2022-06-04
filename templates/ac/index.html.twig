@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AC index{% endblock %}
+
+{% block body %}
+    <h1>AC index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomComplet</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for a_c in a_cs %}
+            <tr>
+                <td>{{ a_c.id }}</td>
+                <td>{{ a_c.nomComplet }}</td>
+                <td>{{ a_c.email }}</td>
+                <td>{{ a_c.roles ? a_c.roles|json_encode : '' }}</td>
+                <td>{{ a_c.password }}</td>
+                <td>
+                    <a href="{{ path('app_a_c_show', {'id': a_c.id}) }}">show</a>
+                    <a href="{{ path('app_a_c_edit', {'id': a_c.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_a_c_new') }}">Create new</a>
+{% endblock %}

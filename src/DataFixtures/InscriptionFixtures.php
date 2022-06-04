@@ -12,9 +12,10 @@ class InscriptionFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $data = new Inscription();
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $annee = rand(2019, 2022);
             $data->setAnnneeScolaire($this->getReference("AnneeScolaire" . $annee))
+                ->setDate(new \DateTime())
                 ->setClasse($this->getReference("Classe" . $i))
                 ->setEtudiant($this->getReference("Etudiant" . $i));
             $manager->persist($data);

@@ -10,7 +10,7 @@ class AnneeScolaireFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i = 2019; $i < 2022; $i++) {
+        for ($i = 2019; $i <= 2022; $i++) {
             $data = new AnneeScolaire();
             $annee = $i . "-" . ($i + 1);
             $data->setLibelle($annee)

@@ -16,8 +16,9 @@ class ProfesseurFixtures extends Fixture
         for ($i = 0; $i < 6; $i++) {
             $prof = new Professeur();
             $rand = rand(0, 6);
+            $pos = rand(0, 2);
             $prof->setNomComplet($fullNames[$rand]);
-            $prof->setGrade($grades[$rand]);
+            $prof->setGrade($grades[$pos]);
             for ($j = 0; $j < 2; $j++) {
                 $ref = rand(0, 9);
                 $prof->addClass($this->getReference('Classe' . $ref));
