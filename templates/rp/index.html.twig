@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RP index{% endblock %}
+
+{% block body %}
+    <h1>RP index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomComplet</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for r_p in r_ps %}
+            <tr>
+                <td>{{ r_p.id }}</td>
+                <td>{{ r_p.nomComplet }}</td>
+                <td>{{ r_p.email }}</td>
+                <td>{{ r_p.roles ? r_p.roles|json_encode : '' }}</td>
+                <td>{{ r_p.password }}</td>
+                <td>
+                    <a href="{{ path('app_r_p_show', {'id': r_p.id}) }}">show</a>
+                    <a href="{{ path('app_r_p_edit', {'id': r_p.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_r_p_new') }}">Create new</a>
+{% endblock %}

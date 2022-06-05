@@ -21,7 +21,7 @@ class ClasseController extends AbstractController
     #[Route('/', name: 'app_classe_index', methods: ['GET'])]
     public function index(ClasseRepository $classeRepository, PaginatorInterface $paginator, Request $request): Response
     {
-       
+
         return $this->render('classe/index.html.twig', [
             'classes' => $paginator->paginate(
                 $classeRepository->findAll(),
@@ -85,6 +85,4 @@ class ClasseController extends AbstractController
 
         return $this->redirectToRoute('app_classe_index', [], Response::HTTP_SEE_OTHER);
     }
-    
-   
 }

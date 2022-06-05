@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RP{% endblock %}
+
+{% block body %}
+    <h1>RP</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ r_p.id }}</td>
+            </tr>
+            <tr>
+                <th>NomComplet</th>
+                <td>{{ r_p.nomComplet }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ r_p.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ r_p.roles ? r_p.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ r_p.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_r_p_index') }}">back to list</a>
+
+    <a href="{{ path('app_r_p_edit', {'id': r_p.id}) }}">edit</a>
+
+    {{ include('rp/_delete_form.html.twig') }}
+{% endblock %}

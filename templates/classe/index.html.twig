@@ -1,148 +1,102 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    la liste des classes
-                        
-                    
-                
-            
-        
-    
+	la liste des classes
+
+
 {% endblock %}
 
 {% block body %}
-    <div class="container d-flex flex-column justify-content-center align-items-center border">
-        <h1>
-            la liste des classes
-                                                                                
-                                                                    
-                                                        
-                                            
-                                
-                    
-        </h1>
+	<div class="container d-flex flex-column justify-content-center align-items-center border">
+		<h1>
+			la liste des classes
 
-        <table class="table table-dark table-striped rounded-3 table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        N°
-                                                                                                                                                                                                            
-                                                                                                                                                                                        
-                                                                                                                                                                    
-                                                                                                                                            
-                                                                                                                    
-                                                                                            
-                                                                    
-                                            
-                    </th>
-                    <th>
-                        Libelle
-                                                                                                                                                                                                            
-                                                                                                                                                                                        
-                                                                                                                                                                    
-                                                                                                                                            
-                                                                                                                    
-                                                                                            
-                                                                    
-                                            
-                    </th>
-                    <th>
-                        Filiere
-                                                                                                                                                                                                            
-                                                                                                                                                                                        
-                                                                                                                                                                    
-                                                                                                                                            
-                                                                                                                    
-                                                                                            
-                                                                    
-                                            
-                    </th>
-                    <th>
-                        Niveau
-                                                                                                                                                                                                            
-                                                                                                                                                                                        
-                                                                                                                                                                    
-                                                                                                                                            
-                                                                                                                    
-                                                                                            
-                                                                    
-                                            
-                    </th>
-                    <th class="text-center">
-                        actions
-                                                                                                                                                                                                            
-                                                                                                                                                                                        
-                                                                                                                                                                    
-                                                                                                                                            
-                                                                                                                    
-                                                                                            
-                                                                    
-                                            
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% set i=0 %}
-                {% for classe in classes %}
-                    {% set i=i+1 %}
 
-                    <tr>
-                        <td>
-                            {{ i }}
-                        </td>
-                        <td>
-                            {{ classe.libelle }}
-                        </td>
-                        <td>
-                            {{ classe.filiere }}
-                        </td>
-                        <td>
-                            {{ classe.niveau }}
-                        </td>
-                        <td class="d-flex justify-content-evenly">
-                            <a name="" id="" class="btn btn-secondary" href="{{ path('app_classe_show', {'id': classe.id}) }}" role="button">
-                                detail
-                                                                                                                                                            
-                                                                                                                            
-                                                                                            
-                                                            
-                            </a>
-                            <a name="" id="" class="btn btn-secondary" href="{{ path('app_classe_edit', {'id': classe.id}) }}" role="button">
-                                edit
-                                                                                                                            
-                                                                                            
-                                                            
-                            </a>
+		</h1>
 
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="5">
-                            no records found
-                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                        
-                                                                                                                                                                                                
-                                                                                                                                                                    
-                                                                                                                                        
-                                                                                                            
-                                                                                
-                                                    
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <a name="" id="" class="btn btn-secondary d-flex align-self-start" href="{{ path('app_classe_new') }}" role="button">
-            Add new classe
-                    
-        </a>
+		<table class="table table-dark table-striped rounded-3 table-hover">
+			<thead>
+				<tr>
+					<th>
+						N°
 
-        <div class"d-flex justify-self-center">
 
-            {{ knp_pagination_render(classes,'pagination.html.twig') }}
-        </div>
+					</th>
+					<th>
+						Libelle
 
-    </div>
+
+					</th>
+					<th>
+						Filiere
+
+
+					</th>
+					<th>
+						Niveau
+
+
+					</th>
+					<th class="text-center">
+						actions
+
+
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set i=0 %}
+				{% for classe in classes %}
+					{% set i=i+1 %}
+
+					<tr>
+						<td>
+							{{ i }}
+						</td>
+						<td>
+							{{ classe.libelle }}
+						</td>
+						<td>
+							{{ classe.filiere }}
+						</td>
+						<td>
+							{{ classe.niveau }}
+						</td>
+						<td class="d-flex justify-content-evenly">
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_classe_show', {'id': classe.id}) }}" role="button">
+								detail
+
+
+							</a>
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_classe_edit', {'id': classe.id}) }}" role="button">
+								edit
+
+
+							</a>
+
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="5">
+							no records found
+
+
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a name="" id="" class="btn btn-secondary d-flex align-self-start" href="{{ path('app_classe_new') }}" role="button">
+			Add new classe
+
+
+		</a>
+
+		<div class"d-flex justify-self-center">
+
+			{{ knp_pagination_render(classes,'pagination.html.twig') }}
+		</div>
+
+	</div>
 {% endblock %}
