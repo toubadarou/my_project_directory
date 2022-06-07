@@ -9,19 +9,20 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route(path: '{/login}', name: 'app_login')]
+    #[Route(path: ['/', '/login'], name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // dd($this->getUser());
         if ($this->getUser()) {
-            dd('You are already logged in!');
-            return $this->redirectToRoute('target_path');
+            return $this->redirectToRoute('/classe');
         }
-
+        
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-
+        
+        // dd($lastUsername);
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 

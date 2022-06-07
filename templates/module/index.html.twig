@@ -1,52 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    Hello ModuleController!
+{% block title %}Liste des modules
 {% endblock %}
 
 {% block body %}
-    <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="container d-flex flex-column justify-content-center align-items-center border">
 
-    <div class="example-wrapper">
-        <h1>
-            {{ titre }}
-            ! ✅
-        </h1>
+		<h1>Liste des modules</h1>
 
-        <div class="overflow-x-auto">
-            <table class="table bg-primary text-center">
-                <!-- head -->
-                <thead>
-                    <tr>
-                        <th>
-                            N°
-                                                    
-                        </th>
-                        <th>
-                            Name
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% set i = 0 %}
-                    {% for module in modules %}
-                        {% set i = i + 1 %}
-                        <tr>
-                            <th>
-                                {{ i }}
+		<table class="table table-dark table-striped rounded-3 table-hover">
 
-                            </th>
-                            <td>
-                                {{ module.nom }}
-                            </td>
-                        </tr>
+			<thead>
+				<tr>
+					<th>N°</th>
+					<th>Nom</th>
+					<th class="text-center">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set i=0 %}
 
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+				{% for module in modules %}
+					{% set i=i+1 %}
+
+					<tr>
+						<td>{{ i }}</td>
+						<td>{{ module.nom }}</td>
+						<td class="d-flex justify-content-evenly">
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_module_show', {'id': module.id}) }}" role="button">
+								detail
+							</a>
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_module_edit', {'id': module.id}) }}" role="button">
+								editer
+							</a>
+						</td>
+
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a name="" id="" class="btn btn-secondary d-flex align-self-start" href="{{ path('app_module_new') }}" role="button">
+			Add new classe
+		</a>
+		<div class"d-flex justify-self-center">
+			{{ knp_pagination_render(modules,'pagination.html.twig') }}
+		</div>
+	</div>
 {% endblock %}

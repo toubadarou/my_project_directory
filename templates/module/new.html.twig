@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Module{% endblock %}
+
+{% block body %}
+<div class="container d-flex flex-column justify-content-center align-items-center border">
+
+    <h1>Ajouter un module</h1>
+
+    {{ include('module/_form.html.twig') }}
+
+    <a name="" id="" class="btn btn-secondary" href="{{ path('app_module_index') }}" role="button">Retour la Liste</a>
+    </div>
+{% endblock %}

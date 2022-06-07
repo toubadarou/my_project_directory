@@ -15,11 +15,11 @@ class Personne
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
 
-    private $nomComplet;
+    protected $nomComplet;
 
     // #[ORM\Column(type: 'string', length: 255)]
     // private $role;

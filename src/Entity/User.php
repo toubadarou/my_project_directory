@@ -18,13 +18,13 @@ class User  extends Personne implements UserInterface, PasswordAuthenticatedUser
     // private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    private $email;
+    protected $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    protected $roles = [];
 
     #[ORM\Column(type: 'string')]
-    private $password;
+    protected $password;
 
     // public function getId(): ?int
     // {

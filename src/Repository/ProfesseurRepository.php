@@ -19,17 +19,17 @@ class ProfesseurRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Professeur::class);
-    }
 
+    }
+    
     public function add(Professeur $entity, bool $flush = false): void
     {
-        $this->getEntityManager()->persist($entity);
-
         if ($flush) {
+            $this->getEntityManager()->persist($entity);
             $this->getEntityManager()->flush();
         }
     }
-
+    
     public function remove(Professeur $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -42,25 +42,25 @@ class ProfesseurRepository extends ServiceEntityRepository
 //    /**
 //     * @return Professeur[] Returns an array of Professeur objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   public function findByExampleField($value): array
+   {
+       return $this->createQueryBuilder('p')
+           ->andWhere('p.exampleField = :val')
+           ->setParameter('val', $value)
+           ->orderBy('p.id', 'ASC')
+           ->setMaxResults(10)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
-//    public function findOneBySomeField($value): ?Professeur
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findOneBySomeField($value): ?Professeur
+   {
+       return $this->createQueryBuilder('p')
+           ->andWhere('p.exampleField = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+   }
 }

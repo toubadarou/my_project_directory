@@ -65,23 +65,13 @@
 						<td class="d-flex justify-content-evenly">
 							<a name="" id="" class="btn btn-secondary" href="{{ path('app_classe_show', {'id': classe.id}) }}" role="button">
 								detail
-
-
 							</a>
 							<a name="" id="" class="btn btn-secondary" href="{{ path('app_classe_edit', {'id': classe.id}) }}" role="button">
-								edit
-
-
-							</a>
-
-						</td>
-					</tr>
+								editer
 				{% else %}
 					<tr>
 						<td colspan="5">
 							no records found
-
-
 						</td>
 					</tr>
 				{% endfor %}
@@ -89,12 +79,8 @@
 		</table>
 		<a name="" id="" class="btn btn-secondary d-flex align-self-start" href="{{ path('app_classe_new') }}" role="button">
 			Add new classe
-
-
 		</a>
-
 		<div class"d-flex justify-self-center">
-
 			{{ knp_pagination_render(classes,'pagination.html.twig') }}
 		</div>
 

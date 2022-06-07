@@ -12,8 +12,19 @@ class DemandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('motif')
-            ->add('date')
+            ->add('motif', null, [
+                'label' => 'Motif de la demande',
+                'attr' => [
+                    'placeholder' => 'Motif de la demande',
+                ],
+            ])
+            ->add('date', null, [
+                'label' => 'Date de la demande',
+                'attr' => [
+                    'placeholder' => 'Date de la demande',
+                    
+                ],
+            ])
         ;
     }
 

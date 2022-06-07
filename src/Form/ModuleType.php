@@ -2,36 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Classe;
+use App\Entity\Module;
 use App\Entity\Professeur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ClasseType extends AbstractType
+class ModuleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // dd($builder->getData()->getProfesseurs());
         $builder
-            ->add('libelle', null, [
-                'label' => 'Libelle',
+            ->add('nom', null, [
+                'label' => 'Nom',
                 'attr' => [
-                    'placeholder' => 'Libelle',
+                    'placeholder' => 'Nom',
                 ],
             ])
-            ->add('filiere', null, [
-                'label' => 'Filiere',
-                'attr' => [
-                    'placeholder' => 'Filiere',
-                ],
-            ])
-            ->add('niveau', null, [
-                'label' => 'Niveau',
-                'attr' => [
-                    'placeholder' => 'Niveau',
-                ],
-            ]);
             // ->add('professeurs', EntityType::class, [
             //     'class' => Professeur::class,
             //     'multiple' => true,
@@ -40,13 +29,14 @@ class ClasseType extends AbstractType
             //     'label_attr' => [
             //         'class' => 'checkbox-switch',
             //     ],
-            // ]);
+            // ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Classe::class,
+            'data_class' => Module::class,
         ]);
     }
 }

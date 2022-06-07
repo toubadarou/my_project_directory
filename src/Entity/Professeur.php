@@ -2,38 +2,31 @@
 
 namespace App\Entity;
 
-use App\Repository\ProfesseurRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Classe;
+use App\Entity\Module;
+use App\Entity\Personne;
 use PhpParser\Node\Expr\Cast;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProfesseurRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Cascade;
 
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
 class Professeur extends Personne
 {
-    // #[ORM\Id]
-    // #[ORM\GeneratedValue]
-    // #[ORM\Column(type: 'integer')]
-    // private $id;
-
-    // #[ORM\Column(type: 'string', length: 255)]
-    // private $role;
-
-    #[ORM\ManyToMany(targetEntity: Classe::class, inversedBy: 'professeurs',cascade:['persist'] )]
-    private $classes;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $grade;
 
-    #[ORM\ManyToMany(targetEntity: Module::class, mappedBy: 'professeurs')]
-    private $modules;
+    #[ORM\ManyToMany(targetEntity: Classe::class, inversedBy: 'professeurs', cascade: ['persist'])]
+    private $classes;
 
+    #[ORM\ManyToMany(targetEntity: Module::class, mappedBy: 'professeurs', cascade: ['persist'])]
+    private $modules;
     public function __construct()
     {
         $this->classes = new ArrayCollection();
         $this->modules = new ArrayCollection();
-        
     }
 
     // public function getId(): ?int

@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
 class Etudiant extends User
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    // #[ORM\Id]
+    // #[ORM\GeneratedValue]
+    // #[ORM\Column(type: 'integer')]
+    // private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $matricule;

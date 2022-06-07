@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Classe;
+use App\Entity\Professeur;
 use App\Form\ClasseType;
 use App\Repository\ClasseRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -35,6 +36,7 @@ class ClasseController extends AbstractController
     public function new(Request $request, ClasseRepository $classeRepository): Response
     {
         $classe = new Classe();
+        // dd($classe);
         $form = $this->createForm(ClasseType::class, $classe);
         $form->handleRequest($request);
 
@@ -53,8 +55,11 @@ class ClasseController extends AbstractController
     #[Route('/{id}', name: 'app_classe_show', methods: ['GET'])]
     public function show(Classe $classe): Response
     {
+        $professeurs = $classe->getProfesseurs();
+        // dd($professeurs[0]);
         return $this->render('classe/show.html.twig', [
             'classe' => $classe,
+            'professeurs' => $professeurs,
         ]);
     }
 

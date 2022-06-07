@@ -2,33 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\User;
-use Doctrine\DBAL\Cache\ArrayResult;
-use Doctrine\DBAL\Types\ArrayType;
-use PhpParser\Node\Expr\Cast\Array_;
+use App\Entity\Etudiant;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class EtudiantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomComplet', null, [
-                'label' => 'Nom complet',
-                'attr' => [
-                    'placeholder' => 'Nom complet',
-                ],
-            ])
+            ->add('nomComplet')
             ->add('email')
-            ->add('password');
+            ->add('roles')
+            ->add('password')
+            ->add('matricule')
+            ->add('sexe')
+            ->add('adresse')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Etudiant::class,
         ]);
     }
 }

@@ -1,6 +1,14 @@
 @import '~bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all.css';
-/* @import '~@fontsource/roboto-condensed'; */
+@import '../../public/bootstrap/Logins/css/main.css';
+@import '../../public/bootstrap/Logins/css/util.css';
 body {
     background-color: white !important;
+}
+.tabProf{
+    /* background-color: #ec1414; */
+    width: 45%;
+   display: flex;
+   justify-self: start;
+   
 }
