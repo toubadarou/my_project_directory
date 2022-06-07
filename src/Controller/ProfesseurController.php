@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Classe;
 use App\Entity\Professeur;
 use App\Form\ProfesseurType;
 use App\Repository\ProfesseurRepository;
@@ -30,8 +31,10 @@ class ProfesseurController extends AbstractController
     public function new(Request $request, ProfesseurRepository $professeurRepository): Response
     {
         $professeur = new Professeur();
+        $classes = new Classe();
         $form = $this->createForm(ProfesseurType::class, $professeur);
         $form->handleRequest($request);
+        // dd($classes);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $professeurRepository->add($professeur, true);

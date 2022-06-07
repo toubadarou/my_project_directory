@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Etudiant{% endblock %}
+{% block title %}Nouveau Etudiant
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Etudiant</h1>
+	<div class="container  d-flex flex-column justify-content-center align-items-center border">
 
-    {{ include('etudiant/_form.html.twig') }}
-
-    <a href="{{ path('app_etudiant_index') }}">back to list</a>
+		<h1>Ajouter un Etudiant</h1>
+		<div class="container  border">
+			{{ include('etudiant/_form.html.twig') }}
+		</div>
+			<a name="" id="" class="btn btn-secondary mt-3 " href="{{ path('app_etudiant_index') }}" role="button">Retour à la Liste</a>
+	</div>
 {% endblock %}

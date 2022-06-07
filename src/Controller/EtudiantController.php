@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Etudiant;
 use App\Form\EtudiantType;
 use App\Repository\EtudiantRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class EtudiantController extends AbstractController
 {
     #[Route('/', name: 'app_etudiant_index', methods: ['GET'])]
-    public function index(EtudiantRepository $etudiantRepository): Response
+    public function index(EtudiantRepository $etudiantRepository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
         return $this->render('etudiant/index.html.twig', [
-            'etudiants' => $etudiantRepository->findAll(),
+            'etudiants' => $paginatorInterface->paginate($etudiantRepository->findAll(), 
+            $request->query->getInt('page', 1), 5)
         ]);
     }
 
@@ -27,13 +29,11 @@ class EtudiantController extends AbstractController
         $etudiant = new Etudiant();
         $form = $this->createForm(EtudiantType::class, $etudiant);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $etudiantRepository->add($etudiant, true);
-
             return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
         }
-
+       
         return $this->renderForm('etudiant/new.html.twig', [
             'etudiant' => $etudiant,
             'form' => $form,
@@ -43,6 +43,7 @@ class EtudiantController extends AbstractController
     #[Route('/{id}', name: 'app_etudiant_show', methods: ['GET'])]
     public function show(Etudiant $etudiant): Response
     {
+        dd('etudiant');
         return $this->render('etudiant/show.html.twig', [
             'etudiant' => $etudiant,
         ]);
@@ -69,10 +70,12 @@ class EtudiantController extends AbstractController
     #[Route('/{id}', name: 'app_etudiant_delete', methods: ['POST'])]
     public function delete(Request $request, Etudiant $etudiant, EtudiantRepository $etudiantRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$etudiant->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $etudiant->getId(), $request->request->get('_token'))) {
             $etudiantRepository->remove($etudiant, true);
         }
 
         return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
     }
+   
+     
 }

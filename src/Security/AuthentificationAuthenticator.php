@@ -49,10 +49,10 @@ class AuthentificationAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
         
-        dd($this-> RouteNotFoundException);
+        // dd($this-> RouteNotFoundException);
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('/classe'));
-        dd($targetPath);
+        // dd($targetPath);
         throw new \Exception('TODO: provide a valid redirect inside ' . __FILE__);
     }
 

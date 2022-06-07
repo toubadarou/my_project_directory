@@ -7,6 +7,7 @@ use App\Entity\Professeur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ClasseType extends AbstractType
@@ -20,27 +21,23 @@ class ClasseType extends AbstractType
                     'placeholder' => 'Libelle',
                 ],
             ])
-            ->add('filiere', null, [
-                'label' => 'Filiere',
-                'attr' => [
-                    'placeholder' => 'Filiere',
-                ],
+            ->add('filiere',ChoiceType::class, [
+                'choices' => Classe::$filieres,
+                'label' => 'filiere',
+                'required' => false,
             ])
-            ->add('niveau', null, [
+           ->add('niveau', ChoiceType::class, [
+                'choices' => Classe::$niveaux,
                 'label' => 'Niveau',
-                'attr' => [
-                    'placeholder' => 'Niveau',
-                ],
+                'required' => false,
             ]);
             // ->add('professeurs', EntityType::class, [
             //     'class' => Professeur::class,
             //     'multiple' => true,
-            //     'expanded' => true,
-            //     'choice_label' => 'nomComplet',
-            //     'label_attr' => [
-            //         'class' => 'checkbox-switch',
-            //     ],
+            //     'expanded' => true
+                
             // ]);
+               
     }
 
     public function configureOptions(OptionsResolver $resolver): void

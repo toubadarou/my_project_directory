@@ -1,47 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Etudiant index{% endblock %}
+{% block title %}Liste des Etudiants
+{% endblock %}
 
 {% block body %}
-    <h1>Etudiant index</h1>
+	{%set i=0%}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NomComplet</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>Matricule</th>
-                <th>Sexe</th>
-                <th>Adresse</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for etudiant in etudiants %}
-            <tr>
-                <td>{{ etudiant.id }}</td>
-                <td>{{ etudiant.nomComplet }}</td>
-                <td>{{ etudiant.email }}</td>
-                <td>{{ etudiant.roles ? etudiant.roles|json_encode : '' }}</td>
-                <td>{{ etudiant.password }}</td>
-                <td>{{ etudiant.matricule }}</td>
-                <td>{{ etudiant.sexe }}</td>
-                <td>{{ etudiant.adresse }}</td>
-                <td>
-                    <a href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}">show</a>
-                    <a href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div class="container d-flex flex-column justify-content-center align-items-center border">
 
-    <a href="{{ path('app_etudiant_new') }}">Create new</a>
+		<h1>Liste des Etudiants</h1>
+
+		<table class="table table-dark table-striped rounded-3 table-hover">
+
+			<thead>
+				<tr>
+					<th>N°</th>
+					<th>NomComplet</th>
+					<th>Matricule
+					</th>
+					<th>Sexe
+					</th>
+					<th>Adresse
+					</th>
+					<th class="text-center">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for etudiant in etudiants %}
+					{%set i=i+1%}
+					<tr>
+						<td>{{i}}
+						</td>
+						<td>{{ etudiant.nomComplet }}
+						</td>
+						<td>
+							{{ etudiant.matricule }}
+						</td>
+						<td>
+							{{ etudiant.sexe }}
+						</td>
+						<td>
+							{{ etudiant.adresse }}
+						</td>
+						<td class="d-flex justify-content-evenly">
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_etudiant_show', {'id': etudiant.id}) }}" role="button">
+								detail
+							</a>
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}" role="button">
+								editer
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a name="" id="" class="btn btn-secondary d-flex align-self-start" href="{{ path('app_etudiant_new') }}" role="button">Ajouter un Etudiant</a>
+		<div class"d-flex justify-self-center">
+			{{ knp_pagination_render(etudiants,'pagination.html.twig') }}
+		</div>
+
+	</div>
 {% endblock %}

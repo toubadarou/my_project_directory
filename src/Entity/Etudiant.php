@@ -2,19 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\EtudiantRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
+use App\Entity\Inscription;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EtudiantRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
 class Etudiant extends User
 {
-    // #[ORM\Id]
-    // #[ORM\GeneratedValue]
-    // #[ORM\Column(type: 'integer')]
-    // private $id;
-
+   #Assert\IsUnique(groups={"etudiant"})
+   #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $matricule;
 
@@ -29,13 +28,11 @@ class Etudiant extends User
 
     public function __construct()
     {
+        // dd('etudiant');
         $this->inscriptions = new ArrayCollection();
     }
 
-    // public function getId(): ?int
-    // {
-    //     return $this->id;
-    // }
+    
 
     public function getMatricule(): ?string
     {
@@ -102,4 +99,5 @@ class Etudiant extends User
 
         return $this;
     }
+   
 }

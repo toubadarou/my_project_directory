@@ -11,6 +11,7 @@ use App\Repository\ProfesseurRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints\Cascade;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
 class Professeur extends Personne
@@ -96,4 +97,9 @@ class Professeur extends Personne
 
         return $this;
     }
+    public  function __toString(): string
+    {
+        return $this->getNomComplet();
+    }
+   
 }

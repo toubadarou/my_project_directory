@@ -88,6 +88,5 @@ class Inscription
 
         return $this;
     }
-
   
 }

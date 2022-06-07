@@ -27,9 +27,13 @@ class Classe
 
     #[ORM\Column(type: 'string', length: 255)]
     private $filiere;
+    public static  $filieres = ['séléctionner une filière..'=>'', 'Dev Web'=>'Dev Web','Dev Data'=>'Dev Data', 'Dev Mobile'=>'Dev Mobile', 'Ref Dig'=>'Ref Dig', 'Cloud'=>'Cloud'];
+
 
     #[ORM\Column(type: 'string', length: 255)]
     private $niveau;
+    public static  $niveaux = ['séléctionner un niveau..'=>'','L1'=>'L1', 'L2'=>'L2', 'L3'=>'L3', 'M1'=>'M1', 'M2'=>'M2'];
+
 
    
     public function __construct()
@@ -138,5 +142,10 @@ class Classe
 
         return $this;
     }
+    public function __toSring(): string
+    {
+        return $this->libelle;
+    }
+   
 
 }
