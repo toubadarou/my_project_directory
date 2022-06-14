@@ -16,10 +16,8 @@ class Classe
     private $id;
 
 
-    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'classes')]
-    private $professeurs;
 
-    #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Inscription::class)]
+    #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Inscription::class, cascade: ['persist'])]
     private $inscriptions;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -34,12 +32,15 @@ class Classe
     private $niveau;
     public static  $niveaux = ['séléctionner un niveau..'=>'','L1'=>'L1', 'L2'=>'L2', 'L3'=>'L3', 'M1'=>'M1', 'M2'=>'M2'];
 
+    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'classes',cascade:["persist"])]
+    private $professeurs;
+
 
    
     public function __construct()
     {
-        $this->professeurs = new ArrayCollection();
         $this->inscriptions = new ArrayCollection();
+        $this->professeurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -49,33 +50,6 @@ class Classe
 
 
   
-
-    /**
-     * @return Collection<int, Professeur>
-     */
-    public function getProfesseurs(): Collection
-    {
-        return $this->professeurs;
-    }
-
-    public function addProfesseur(Professeur $professeur): self
-    {
-        if (!$this->professeurs->contains($professeur)) {
-            $this->professeurs[] = $professeur;
-            $professeur->addClass($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProfesseur(Professeur $professeur): self
-    {
-        if ($this->professeurs->removeElement($professeur)) {
-            $professeur->removeClass($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Inscription>
@@ -145,6 +119,33 @@ class Classe
     public function __toSring(): string
     {
         return $this->libelle;
+    }
+
+    /**
+     * @return Collection<int, Professeur>
+     */
+    public function getProfesseurs(): Collection
+    {
+        return $this->professeurs;
+    }
+
+    public function addProfesseur(Professeur $professeur): self
+    {
+        if (!$this->professeurs->contains($professeur)) {
+            $this->professeurs[] = $professeur;
+            $professeur->addClass($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProfesseur(Professeur $professeur): self
+    {
+        if ($this->professeurs->removeElement($professeur)) {
+            $professeur->removeClass($this);
+        }
+
+        return $this;
     }
    
 

@@ -19,8 +19,8 @@ class EtudiantFixtures extends Fixture
         $plainPassword = 'passer@123';
         for ($i = 0; $i < 10; $i++) {
             $user = new Etudiant();
-            $user->setNomComplet('Nom et Prenom' . $i);
-            $user->setEmail('login_etu' . $i);
+            $user->setNomComplet('Nom et Prenom etu' . $i);
+            $user->setEmail('login_rp'.$i.'@gmail.com');
             $encoded = $this->encoder->hashPassword($user, $plainPassword);
             $user->setPassword($encoded);
             $user->setRoles(["ROLE_ETUDIANT"]);

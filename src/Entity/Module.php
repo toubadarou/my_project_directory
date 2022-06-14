@@ -18,8 +18,10 @@ class Module
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
-    #[ORM\ManyToMany(targetEntity: Professeur::class, inversedBy: 'modules')]
+    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'modules',cascade:["persist"])]
     private $professeurs;
+
+   
 
     public function __construct()
     {
@@ -42,6 +44,10 @@ class Module
 
         return $this;
     }
+    public  function __toString(): string
+    {
+        return $this->nom;
+    }
 
     /**
      * @return Collection<int, Professeur>
@@ -55,6 +61,7 @@ class Module
     {
         if (!$this->professeurs->contains($professeur)) {
             $this->professeurs[] = $professeur;
+            $professeur->addModule($this);
         }
 
         return $this;
@@ -62,12 +69,10 @@ class Module
 
     public function removeProfesseur(Professeur $professeur): self
     {
-        $this->professeurs->removeElement($professeur);
+        if ($this->professeurs->removeElement($professeur)) {
+            $professeur->removeModule($this);
+        }
 
         return $this;
-    }
-    public  function __toString(): string
-    {
-        return $this->nom;
     }
 }

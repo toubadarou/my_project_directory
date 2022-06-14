@@ -16,6 +16,7 @@ class AnneeScolaireController extends AbstractController
     #[Route('/', name: 'app_annee_scolaire_index', methods: ['GET'])]
     public function index(AnneeScolaireRepository $anneeScolaireRepository): Response
     {
+        dd($anneeScolaireRepository->findOneBy(['etats' => true]));
         return $this->render('annee_scolaire/index.html.twig', [
             'annee_scolaires' => $anneeScolaireRepository->findAll(),
         ]);

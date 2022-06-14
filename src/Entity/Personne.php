@@ -6,9 +6,9 @@ use App\Repository\PersonneRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PersonneRepository::class)]
-#ORM\InheritanceType("JOINED")
-#ORM\DiscriminatorColumn(name="type", type="string")
-#ORM\DiscriminatorMap({"personne" = "Personne", "user" ="User", "professeur" ="Professeur"})
+#[ORM\InheritanceType("JOINED")]
+#[ORM\DiscriminatorColumn(name:"type", type:"string")]
+#[ORM\DiscriminatorMap(["personne"=>"Personne", "user"=>"User", "professeur"=>"Professeur", "etudiant"=>"Etudiant", "rp"=>"RP" , "ac"=>"AC"])]
 
 class Personne
 {

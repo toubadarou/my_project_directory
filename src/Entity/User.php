@@ -9,7 +9,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #ORM\InheritanceType("JOINED")
 #ORM\DiscriminatorColumn(name="type", type="string")
-#ORM\DiscriminatorMap({"user" = "User", "etudiant" ="Etudiant", "rp" = "RP" , "ac" = "AC"})
 class User  extends Personne implements UserInterface, PasswordAuthenticatedUserInterface
 {
     // #[ORM\Id]

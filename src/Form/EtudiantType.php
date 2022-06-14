@@ -16,7 +16,7 @@ class EtudiantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        dd($builder->getData()->getProfesseurs());
+        // dd($builder->getData()->getProfesseurs());
         $builder
             ->add('nomComplet',null, [
                 'label' => 'Nom complet',
@@ -24,30 +24,30 @@ class EtudiantType extends AbstractType
                     'placeholder' => 'Nom complet',
                 ],
             ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email',
-                'attr' => [
-                    'placeholder' => 'Email',
-                ],
-            ])
+            // ->add('email', EmailType::class, [
+            //     'label' => 'Email',
+            //     'attr' => [
+            //         'placeholder' => 'Email',
+            //     ],
+            // ])
             
-            ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe',
-                'attr' => [
-                    'type' => 'password',
-                    'placeholder' => 'Mot de passe',
-                ],
-            ])
-            ->add('matricule', null, [
-                'label' => 'Matricule',
-                'attr' => [
-                    'placeholder' => 'Matricule',
-                ],
-            ])
+            // ->add('password', PasswordType::class, [
+            //     'label' => 'Mot de passe',
+            //     'attr' => [
+            //         'type' => 'password',
+            //         'placeholder' => 'Mot de passe',
+            //     ],
+            // ])
+            // ->add('matricule', null, [
+            //     'label' => 'Matricule',
+            //     'attr' => [
+            //         'placeholder' => 'Matricule',
+            //     ],
+            // ])
             ->add('sexe', ChoiceType::class, [
                 'choices' => [
-                    'Masculin' => 'Masculin',
-                    'Feminin' => 'Feminin',
+                    'Masculin' => 'M',
+                    'Feminin' => 'F',
                 ],
                 'label' => 'Sexe',
                 'attr' => [

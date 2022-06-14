@@ -18,19 +18,19 @@ class Inscription
     #[ORM\Column(type: 'date')]
     private $date;
 
-    #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'inscriptions')]
+    #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'inscriptions', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private $classe;
 
-    #[ORM\ManyToOne(targetEntity: AnneeScolaire::class, inversedBy: 'inscriptions')]
+    #[ORM\ManyToOne(targetEntity: AnneeScolaire::class, inversedBy: 'inscriptions', cascade: ["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private $annneeScolaire;
 
-    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'inscriptions')]
+    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'inscriptions', cascade: ["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private $etudiant;
 
-    
+
 
     public function __construct()
     {
@@ -88,5 +88,4 @@ class Inscription
 
         return $this;
     }
-  
 }

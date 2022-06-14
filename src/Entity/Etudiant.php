@@ -6,8 +6,11 @@ use App\Entity\User;
 use App\Entity\Inscription;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\EtudiantRepository;
+use Doctrine\ORM\PersistentCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentToken;
 
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
 class Etudiant extends User
@@ -25,10 +28,13 @@ class Etudiant extends User
 
     #[ORM\OneToMany(mappedBy: 'etudiant', targetEntity: Inscription::class)]
     private $inscriptions;
-
-    public function __construct()
+    // private UserPasswordHasherInterface $encoder;
+    public function __construct( )
     {
+        $this->roles = array('ROLE_ETUDIANT');
+        $this->matricule = 'matricule'.rand(1,100);
         // dd('etudiant');
+        // $this->encoder->hashPassword($this, 'passer@123');
         $this->inscriptions = new ArrayCollection();
     }
 
