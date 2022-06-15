@@ -50,7 +50,7 @@ class ProfesseurController extends AbstractController
     #[Route('/{id}', name: 'app_professeur_show', methods: ['GET'])]
     public function show(Professeur $professeur): Response
     {
-        dd($professeur);
+        // dd($professeur);
         return $this->render('professeur/show.html.twig', [
             'professeur' => $professeur,
         ]);

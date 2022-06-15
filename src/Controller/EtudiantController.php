@@ -43,7 +43,6 @@ class EtudiantController extends AbstractController
     #[Route('/{id}', name: 'app_etudiant_show', methods: ['GET'])]
     public function show(Etudiant $etudiant): Response
     {
-        dd('etudiant');
         return $this->render('etudiant/show.html.twig', [
             'etudiant' => $etudiant,
         ]);
@@ -54,14 +53,14 @@ class EtudiantController extends AbstractController
     {
         $form = $this->createForm(EtudiantType::class, $etudiant);
         $form->handleRequest($request);
-
+        // dd($etudiant);
         if ($form->isSubmitted() && $form->isValid()) {
             $etudiantRepository->add($etudiant, true);
 
             return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('etudiant/edit.html.twig', [
+        return $this->renderForm('inscription/new.html.twig', [
             'etudiant' => $etudiant,
             'form' => $form,
         ]);

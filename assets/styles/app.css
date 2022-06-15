@@ -2,13 +2,21 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import '../../public/bootstrap/Logins/css/main.css';
 @import '../../public/bootstrap/Logins/css/util.css';
+@import '../../public/bootstrap/sidebar/css/style.css';
+
+
+
+
 body {
-    background-color: white !important;
+    background-color: rgba(19, 17, 17, 0.089) !important;
 }
-.tabProf{
+body textarea{
+    border: 2px solid black;
+}
+.tabProf {
     /* background-color: #ec1414; */
     width: 45%;
-   display: flex;
-   justify-self: start;
-   
+    display: flex;
+    justify-self: start;
+
 }

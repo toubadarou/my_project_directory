@@ -20,23 +20,25 @@ class Classe
     #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Inscription::class, cascade: ['persist'])]
     private $inscriptions;
 
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $libelle;
 
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $filiere;
-    public static  $filieres = ['séléctionner une filière..'=>'', 'Dev Web'=>'Dev Web','Dev Data'=>'Dev Data', 'Dev Mobile'=>'Dev Mobile', 'Ref Dig'=>'Ref Dig', 'Cloud'=>'Cloud'];
+    public static  $filieres = ['séléctionner une filière..' => '', 'Dev Web' => 'Dev Web', 'Dev Data' => 'Dev Data', 'Dev Mobile' => 'Dev Mobile', 'Ref Dig' => 'Ref Dig', 'Cloud' => 'Cloud'];
 
-
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $niveau;
-    public static  $niveaux = ['séléctionner un niveau..'=>'','L1'=>'L1', 'L2'=>'L2', 'L3'=>'L3', 'M1'=>'M1', 'M2'=>'M2'];
+    public static  $niveaux = ['séléctionner un niveau..' => '', 'L1' => 'L1', 'L2' => 'L2', 'L3' => 'L3', 'M1' => 'M1', 'M2' => 'M2'];
 
-    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'classes',cascade:["persist"])]
+    #[ORM\ManyToMany(targetEntity: Professeur::class, mappedBy: 'classes', cascade: ["persist"])]
     private $professeurs;
 
 
-   
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
@@ -49,7 +51,7 @@ class Classe
     }
 
 
-  
+
 
     /**
      * @return Collection<int, Inscription>
@@ -147,6 +149,4 @@ class Classe
 
         return $this;
     }
-   
-
 }

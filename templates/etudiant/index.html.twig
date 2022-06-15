@@ -56,9 +56,8 @@
 						<td colspan="9">no records found</td>
 					</tr>
 				{% endfor %}
-			</tbody>
 		</table>
-		<a name="" id="" class="btn btn-secondary d-flex align-self-start" href="{{ path('app_etudiant_new') }}" role="button">Ajouter un Etudiant</a>
+		<a name="" id="" class="btn btn-secondary d-flex align-self-start" href="{{ path('app_inscription_new') }}" role="button">Ajouter un Etudiant</a>
 		<div class"d-flex justify-self-center">
 			{{ knp_pagination_render(etudiants,'pagination.html.twig') }}
 		</div>

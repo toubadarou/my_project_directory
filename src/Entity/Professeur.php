@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: ProfesseurRepository::class)]
 class Professeur extends Personne
 {
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $grade;
 

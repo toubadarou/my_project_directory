@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ProfesseurType extends AbstractType
@@ -22,10 +23,20 @@ class ProfesseurType extends AbstractType
                     'placeholder' => 'Nom complet',
                 ],
             ])
-            ->add('grade', null, [
+            ->add('grade', ChoiceType::class, [
+                'choices' => [
+                    'Docteur' => 'Docteur',
+                    'Ingénieur' => 'Ingénieur',
+                    'Master' => 'Master',
+                    'Stagiaire' => 'Stagiaire',
+                    'Spécialiste' => 'Spécialiste',
+
+                ],
                 'label' => 'Grade',
                 'attr' => [
                     'placeholder' => 'Grade',
+                    'require' => true
+
                 ],
             ])
             ->add('classes', EntityType::class, [

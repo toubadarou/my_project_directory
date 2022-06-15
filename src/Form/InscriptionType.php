@@ -21,7 +21,6 @@ class InscriptionType extends AbstractType
         $builder
             // ->add('date')
             ->add('etudiant', EtudiantType::class, [
-                'label' => 'Etudiant',
                 'required' => true,
             ])
             ->add('classe',EntityType::class, [

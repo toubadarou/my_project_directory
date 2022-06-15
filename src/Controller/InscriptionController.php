@@ -27,6 +27,7 @@ class InscriptionController extends AbstractController
     #[Route('/', name: 'app_inscription_index', methods: ['GET'])]
     public function index(InscriptionRepository $inscriptionRepository): Response
     {
+        // dd($inscriptionRepository->findAll());
         return $this->render('inscription/index.html.twig', [
             'inscriptions' => $inscriptionRepository->findAll(),
         ]);
@@ -45,8 +46,7 @@ class InscriptionController extends AbstractController
             $password = $this->encoder->hashPassword($inscription->getEtudiant(), 'passer@123');
             $inscription->getEtudiant()->setPassword($password);
             $inscriptionRepository->add($inscription, true);
-
-            return $this->redirectToRoute('app_inscription_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('inscription/new.html.twig', [

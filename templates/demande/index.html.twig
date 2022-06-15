@@ -1,37 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Demande index{% endblock %}
+{% block title %}Demande index
+{% endblock %}
 
 {% block body %}
-    <h1>Demande index</h1>
+	<div class="container d-flex flex-column justify-content-center align-items-center border">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Motif</th>
-                <th>Date</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for demande in demandes %}
-            <tr>
-                <td>{{ demande.id }}</td>
-                <td>{{ demande.motif }}</td>
-                <td>{{ demande.date ? demande.date|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_demande_show', {'id': demande.id}) }}">show</a>
-                    <a href="{{ path('app_demande_edit', {'id': demande.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<h1>Liste des Demandes</h1>
+		<table class="table table-dark table-striped rounded-3 table-hover">
 
-    <a href="{{ path('app_demande_new') }}">Create new</a>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Motif</th>
+					<th>Date</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for demande in demandes %}
+					<tr>
+						<td>{{ demande.id }}</td>
+						<td>{{ demande.motif }}</td>
+						<td>{{ demande.date ? demande.date|date('Y-m-d') : '' }}</td>
+
+						<td class="d-flex justify-content-evenly">
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_demande_show', {'id': demande.id}) }}" role="button">
+								detail
+							</a>
+							<a name="" id="" class="btn btn-secondary" href="{{ path('app_demande_edit', {'id': demande.id}) }}" role="button">
+								editer
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a name="" id="" class="btn btn-secondary" href="{{ path('app_demande_new') }}" role="button">
+			Nouvelle demande
+		</a>
+		<div class"d-flex justify-self-center">
+			{{ knp_pagination_render(demandes,'pagination.html.twig') }}
+		</div>
+	</div>
+
 {% endblock %}

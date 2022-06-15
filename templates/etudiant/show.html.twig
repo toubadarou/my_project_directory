@@ -1,50 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Etudiant{% endblock %}
+{% block title %}
+Etudiant
+{% endblock %}
 
 {% block body %}
-    <h1>Etudiant</h1>
+	<div class="container  d-flex flex-column justify-content-center align-items-center border">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ etudiant.id }}</td>
-            </tr>
-            <tr>
-                <th>NomComplet</th>
-                <td>{{ etudiant.nomComplet }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ etudiant.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ etudiant.roles ? etudiant.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ etudiant.password }}</td>
-            </tr>
-            <tr>
-                <th>Matricule</th>
-                <td>{{ etudiant.matricule }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ etudiant.sexe }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ etudiant.adresse }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<h1>Les détails de {{ etudiant.nomComplet }}</h1>
+		<div class="container  border">
 
-    <a href="{{ path('app_etudiant_index') }}">back to list</a>
+			<table class="table">
+				<tbody>
+					{# <tr>
+						<th>Id</th>
+						<td>{{ etudiant.id }}</td>
+					</tr> #}
+					<tr>
+						<th>NomComplet</th>
+						<td>{{ etudiant.nomComplet }}</td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td>{{ etudiant.email }}</td>
+					</tr>
+					{# <tr>
+						<th>Roles</th>
+						<td>{{ etudiant.roles ? etudiant.roles|json_encode : '' }}</td>
+					</tr> #}
+					{# <tr>
+						<th>Password</th>
+						<td>{{ etudiant.password }}</td>
+					</tr> #}
+					<tr>
+						<th>Matricule</th>
+						<td>{{ etudiant.matricule }}</td>
+					</tr>
+					<tr>
+						<th>Sexe</th>
+						<td>{{ etudiant.sexe }}</td>
+					</tr>
+					<tr>
+						<th>Adresse</th>
+						<td>{{ etudiant.adresse }}</td>
+					</tr>
+				</tbody>
+			</table>
 
-    <a href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}">edit</a>
+			<a name="" id="" class="btn btn-primary" href="{{ path('app_etudiant_index') }}" role="button">Retour à la liste</a>
 
-    {{ include('etudiant/_delete_form.html.twig') }}
+			<a name="" id="" class="btn btn-primary ml-5" href="{{ path('app_etudiant_edit', {'id': etudiant.id}) }}" role="button">Réinscrire</a>
+		</div>
+        {{ include('etudiant/_delete_form.html.twig') }}
+
+	</div>
+
 {% endblock %}

@@ -1,17 +1,13 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue{% endblock %}
-
-{% block body %}
 <div class="wrapper d-flex align-items-stretch">
 <nav id="sidebar">
     <div class="custom-menu">
         <button type="button" id="sidebarCollapse" class="btn btn-primary">
 </button>
 </div>
-  <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+  <div class="img bg-wrap text-center py-4" style="background-image: url({{ asset ('bootstrap/sidebar/images/bg_1.jpg') }});">
       <div class="user-logo">
-          <div class="img" style="background-image: url(images/logo.jpg);"></div>
+          <div class="img" style="background-image: url({{ asset ('bootstrap/sidebar/images/logo.jpg') }});"></div>
           <h3>Catriona Henderson</h3>
       </div>
   </div>
@@ -23,6 +19,11 @@
   <a href="#"><span class="fa fa-download mr-3 notif"><small class="d-flex align-items-center justify-content-center">5</small></span> Download</a>
 </li>
 <li>
+<div class="mb-3">
+  <label for="" class="form-label"></label>
+  <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+  <small id="helpId" class="form-text text-muted">Help text</small>
+</div>
 <a href="#"><span class="fa fa-gift mr-3"></span> Gift Code</a>
 </li>
 <li>
@@ -43,9 +44,9 @@
 
 <!-- Page Content  -->
 <div id="content" class="p-4 p-md-5 pt-5">
-<h2 class="mb-4">Sidebar #09</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+{% block body %} 
+{% endblock %}
+
 </div>
 </div>
-  {% endblock %}
+ 

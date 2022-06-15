@@ -17,7 +17,7 @@ class Inscription
 
     #[ORM\Column(type: 'date')]
     private $date;
-
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\ManyToOne(targetEntity: Classe::class, inversedBy: 'inscriptions', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private $classe;
@@ -25,7 +25,7 @@ class Inscription
     #[ORM\ManyToOne(targetEntity: AnneeScolaire::class, inversedBy: 'inscriptions', cascade: ["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private $annneeScolaire;
-
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'inscriptions', cascade: ["persist"])]
     #[ORM\JoinColumn(nullable: false)]
     private $etudiant;

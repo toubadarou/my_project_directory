@@ -10,17 +10,27 @@
             <tr>
                 <th>Id</th>
                 <th>Date</th>
-                <th>actions</th>
+                <th>Etudiant</th>
+                <th>Classe</th>
+                <th>Année Scolaire</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for inscription in inscriptions %}
+        
             <tr>
                 <td>{{ inscription.id }}</td>
                 <td>{{ inscription.date ? inscription.date|date('Y-m-d') : '' }}</td>
+                <td>{{ inscription.etudiant.nomComplet }}</td>
+                <td>{{ inscription.classe.libelle }}</td>
+                <td>{{ inscription.annneeScolaire.libelle }}</td>
                 <td>
-                    <a href="{{ path('app_inscription_show', {'id': inscription.id}) }}">show</a>
-                    <a href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">edit</a>
+			<a name="" id="" class="btn btn-primary" href="{{ path('app_inscription_show', {'id': inscription.id}) }}" role="button">Retour à la liste</a>
+        <a name="" id="" class="btn btn-primary" href="{{ path('app_inscription_edit', {'id': inscription.id}) }}" role="button">Réinscrire</a>
+
+                    {# <a href="{{ path('app_inscription_show', {'id': inscription.id}) }}">Detail</a> #}
+                    {# <a href="{{ path('app_inscription_edit', {'id': inscription.id}) }}">Editer</a> #}
                 </td>
             </tr>
         {% else %}
@@ -30,6 +40,7 @@
         {% endfor %}
         </tbody>
     </table>
+<a name="" id="" class="btn btn-primary" href="{{ path('app_inscription_new') }}" role="button">inscrire</a>
 
-    <a href="{{ path('app_inscription_new') }}">Create new</a>
+    {# <a href="{{ path('app_inscription_new') }}">Create new</a> #}
 {% endblock %}

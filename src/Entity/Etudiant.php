@@ -15,30 +15,32 @@ use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentToken;
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
 class Etudiant extends User
 {
-   #Assert\IsUnique(groups={"etudiant"})
-   #Assert\NotBlank(groups={"etudiant"})
+    #Assert\IsUnique(groups={"etudiant"})
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $matricule;
 
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $sexe;
 
+    #Assert\NotBlank(groups={"etudiant"})
     #[ORM\Column(type: 'string', length: 255)]
     private $adresse;
 
     #[ORM\OneToMany(mappedBy: 'etudiant', targetEntity: Inscription::class)]
     private $inscriptions;
     // private UserPasswordHasherInterface $encoder;
-    public function __construct( )
+    public function __construct()
     {
         $this->roles = array('ROLE_ETUDIANT');
-        $this->matricule = 'matricule'.rand(1,100);
+        $this->matricule = 'matricule' . rand(1, 100);
         // dd('etudiant');
         // $this->encoder->hashPassword($this, 'passer@123');
         $this->inscriptions = new ArrayCollection();
     }
 
-    
+
 
     public function getMatricule(): ?string
     {
@@ -105,5 +107,4 @@ class Etudiant extends User
 
         return $this;
     }
-   
 }

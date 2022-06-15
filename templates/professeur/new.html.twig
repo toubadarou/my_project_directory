@@ -4,12 +4,19 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="container  d-flex flex-column justify-content-center align-items-center border">
+		<div
+			class="container  d-flex flex-column justify-content-center align-items-center border">
 
-		<h1>Ajouter un Professeur</h1>
+			{# <h1>Ajouter un Professeur</h1> #}
 
-		{{ include('professeur/_form.html.twig') }}
-		<a name="" id="" class="btn btn-secondary" href="{{ path('app_professeur_index') }}" role="button">Retour la Liste</a>
+			{{ include('professeur/_form.html.twig') }}
+		</div>
+		<div class="container  d-flex flex-column justify-content-center align-items-center ">
+
+			<a name="" id="" class="btn btn-secondary d-flex flex-column justify-self-end ml-5" href="{{ path('app_professeur_index') }}" role="button">Retour la Liste</a>
+		</div>
 	</div>
 
 {% endblock %}

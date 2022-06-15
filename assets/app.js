@@ -10,4 +10,9 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+// import './bootstrap/dist/js/bootstrap.bundle.min.js';
+import '../public/bootstrap/sidebar/js/jquery.min.js';
+import '../public/bootstrap/sidebar/js/popper.js';
+// import '../public/bootstrap/sidebar/js/bootstrap.min.js';
+import '../public/bootstrap/sidebar/js/main.js';
 console.log(' is this working?');

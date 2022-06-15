@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Inscription{% endblock %}
+{% block title %}Formulaire d'inscription{% endblock %}
 
 {% block body %}
-    <h1>Create new Inscription</h1>
+<div class="container  d-flex flex-column justify-content-center align-items-center border">
+
+    <h1>Inscrire/réinscrire un étudiant</h1>
+		<div class="container  border">
 
     {{ include('inscription/_form.html.twig') }}
+		</div>
 
-    <a href="{{ path('app_inscription_index') }}">back to list</a>
+<a name="" id="" class="btn btn-primary" href="{{ path('app_inscription_index') }}" role="button">Retour à la liste</a>
+</div>
+
 {% endblock %}

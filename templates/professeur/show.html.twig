@@ -1,30 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Professeur{% endblock %}
+{% block title %}Professeur
+{% endblock %}
 
 {% block body %}
-    <h1>Professeur</h1>
+	<div class="container  d-flex flex-column justify-content-center align-items-center border">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ professeur.id }}</td>
-            </tr>
-            <tr>
-                <th>NomComplet</th>
-                <td>{{ professeur.nomComplet }}</td>
-            </tr>
-            <tr>
-                <th>Grade</th>
-                <td>{{ professeur.grade }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<h1>Professeur</h1>
+		<div class="container  border">
 
-    <a href="{{ path('app_professeur_index') }}">back to list</a>
-
-    <a href="{{ path('app_professeur_edit', {'id': professeur.id}) }}">edit</a>
-
-    {{ include('professeur/_delete_form.html.twig') }}
+			<table class="table">
+				<tbody>
+					{# <tr>
+						<th>Id</th>
+						<td>{{ professeur.id }}</td>
+					</tr> #}
+					<tr>
+						<th>NomComplet</th>
+						<td>{{ professeur.nomComplet }}</td>
+					</tr>
+					<tr>
+						<th>Grade</th>
+						<td>{{ professeur.grade }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<a name="" id="" class="btn btn-primary" href="{{ path('app_professeur_index') }}" role="button">Retour à la liste</a>
+			<a name="" id="" class="btn btn-primary" href="{{ path('app_professeur_edit', {'id': professeur.id}) }}" role="button">éditer</a>
+		</div>
+		{{ include('professeur/_delete_form.html.twig') }}
+	</div>
 {% endblock %}

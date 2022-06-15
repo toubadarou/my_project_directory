@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,10 +19,14 @@ class EtudiantType extends AbstractType
     {
         // dd($builder->getData()->getProfesseurs());
         $builder
-            ->add('nomComplet',null, [
+            ->add('nomComplet', null, [
                 'label' => 'Nom complet',
                 'attr' => [
                     'placeholder' => 'Nom complet',
+                    'require' => true,
+                    'autocomplete' => true,
+                    'autofocus' => true,
+
                 ],
             ])
             // ->add('email', EmailType::class, [
@@ -30,7 +35,7 @@ class EtudiantType extends AbstractType
             //         'placeholder' => 'Email',
             //     ],
             // ])
-            
+
             // ->add('password', PasswordType::class, [
             //     'label' => 'Mot de passe',
             //     'attr' => [
@@ -52,12 +57,18 @@ class EtudiantType extends AbstractType
                 'label' => 'Sexe',
                 'attr' => [
                     'placeholder' => 'Sexe',
+                    'require' => true
+
                 ],
             ])
             ->add('adresse', null, [
                 'label' => 'Adresse',
                 'attr' => [
                     'placeholder' => 'Adresse',
+                    'require' => true,
+                    'autofocus' => true,
+                    'autocomplete' => true,
+
                 ],
             ]);
     }

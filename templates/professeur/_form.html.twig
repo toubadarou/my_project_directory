@@ -1,6 +1,26 @@
 {{ form_start(form) }}
 
-{{ form(form) }}
+{# {{ form_widget(form) }} #}
+<h1>Nouveau Professeur</h1>
+{# {{ form_start(form) }} #}
+{{ form_row(form.nomComplet) }}
+{{ form_row(form.grade) }}
+<div class="container  d-flex justify-content-between align-items-center border">
+
+{{ form_row(form.classes) }}
+{{ form_row(form.modules) }}
+</div>
+{# {{ form_row(form.adresse) }}
+{{ form_row(form.dateNaissance) }}
+{{ form_row(form.dateEmbauche) }}
+{{ form_row(form.salaire) }}
+{{ form_row(form.service) }}
+{{ form_row(form.matiere) }}
+{{ form_row(form.etat) }}
+{{ form_row(form.photo) }}
+{{ form_row(form.cv) }}
+{{ form_row(form.diplome) }}
+{{ form_row(form.diplome2) }} #}
 <button class="btn btn-secondary">{{ button_label|default('Enregistrer') }}</button>
 
 {{ form_end(form) }}
